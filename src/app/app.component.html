@@ -1,0 +1,8 @@
+<div style="text-align:center">
+    <!-- component interaction: parent to child  -->
+    <h1 >{{message}}</h1>
+</div>
+<!-- <app-test></app-test> -->
+<!-- component interaction parent to child && child to parent-->
+<app-part2 [parentData]="activity" [userName]="participantName" (childEvent)="message=$event"></app-part2>
+

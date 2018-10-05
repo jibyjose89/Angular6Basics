@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Code-Evolution';
+// component interaction: parent to child 
+  activity="Component interaction";
+  participantName="Jiby";
+}

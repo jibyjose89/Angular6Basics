@@ -1,0 +1,80 @@
+<!-- Interpolation: with interpolation we can bind data from class to template-->
+<h2>Welcome {{name}}</h2>
+
+<!-- Property Binding: Binding to the property of DOM element -->
+<input type="text"  [disabled]="isDisabled" [id]="myId"><br>
+<!-- Property Binding: Interpolation wont work for disabled property -->
+<input type="text"  disabled="{{isDisabled}}" [id]="myId">
+
+<!-- Class Binding: binding classes to html elements in angular -->
+<!-- a regular class attribute -->
+<h2 class="text-success">Code Evolution</h2>
+<!-- class binding -->
+<h2 [class]="successClass">Code Evolution</h2>
+<!-- a regular class attribute becomes dummy attribute in the presence of class binding.Use one or the other, but not both. -->
+<h2 [class]="successClass" class="text-special">Code Evolution</h2>
+<!-- conditionally apply multiple class binding -->
+<h2 [ngClass]="messageClasses">code evolution</h2>
+
+<!-- Style binding -->
+<h2 [style.color]="'orange'">Style binding 1</h2>
+<h2 [style.color]="hasError? 'red' : 'green'">Style binding 1</h2>
+<h2 [style.color]="highlightColor">Style binding 2</h2>
+<h2 [ngStyle]="titleStyles">Style binding 3</h2>
+
+<!-- Event Binding -->
+<button (click)="greeter()">Greet</button>{{greeting}}<br>
+<button (click)="greeter($event)">Greet</button><br>
+<button (click)="greeting='Welcome Jiby'">Greet</button>{{greeting}}<br>
+
+<!-- Template reference variable -->
+<input #myInp type="text">
+<button (click)="logMessage(myInp.value)">Log</button>
+<button (click)="logMessage(myInp)">Log</button><br>
+
+<!-- two way data binding -->
+<!-- add ngModel and import formsModule for two way data binding -->
+<!-- assign the property to the ngModel directive -->
+<input type="text" [(ngModel)]="userName">{{userName}}
+
+<!-- Structural Directives
+ngIf, conditionally render-->
+<div *ngIf="displayName" >
+    <h2>Jiby</h2>
+</div>
+
+<!-- ngIf, ng-template -->
+<div *ngIf="married; then marriedBlock; else singleBlock;"></div>
+<ng-template #marriedBlock>
+   <h2>Tinku</h2> 
+</ng-template>
+<ng-template #singleBlock>
+    <h2>Jose</h2>
+</ng-template>
+
+<!-- ngSwitch ,conditionally render-->
+
+<div [ngSwitch]="color">
+    <h2 [style.color]="'red'" *ngSwitchCase="'red'">you picked red color</h2>
+    <h2 [style.color]="'blue'" *ngSwitchCase="'blue'">you picked blue color</h2>
+    <h2 [style.color]="'green'" *ngSwitchCase="'green'">you picked green color</h2>
+    <h2 [style.color]="'orange'" *ngSwitchCase="'orange'">you picked orange color</h2>
+    <h2 *ngSwitchDefault>Pick Again</h2>
+</div>
+
+<!-- ngFor to render a list of elements -->
+<div *ngFor="let color of colors; index as i">
+    <h2 [style.color]="color">{{i}} {{color}}</h2>
+</div>
+<div *ngFor="let color of colors; even as e">
+        <h2 [style.color]="color">{{e}} {{color}}</h2>
+</div>
+<div *ngFor="let color of colors; odd as o">
+        <h2 [style.color]="color">{{o}} {{color}}</h2>
+</div>
+<div *ngFor="let color of colors; first as f">
+        <h2 [style.color]="color">{{f}} {{color}}</h2>
+</div>    
+<div *ngFor="let color of colors; last as f">
+        <h2 [style.color]="color">{{f}} {{color}}</h2>
+</div> 
